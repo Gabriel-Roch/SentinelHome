@@ -15,8 +15,6 @@ export class FindContactUseCase {
     ) { }
 
     async execute(params?: Partial<FindContactParams>): Promise<ContactEntity[]> {
-        console.log(params)
-        console.log("chegou aqui")
         return await this.contactRepository.findAll(params)
     }
 
