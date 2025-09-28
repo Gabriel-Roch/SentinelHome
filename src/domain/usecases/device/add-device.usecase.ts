@@ -34,8 +34,10 @@ export class AddDeviceUseCase {
         const newDevice = new DeviceEntity({
             id: randomUUID(),
             homeID: params.homeID,
-            name: params.name,
-            location : params.location,
+            macAddress: params.macAddress,
+            type: params.type,
+            isActive: true,
+            location: params.location,
             dt_create: new Date()
         })
 

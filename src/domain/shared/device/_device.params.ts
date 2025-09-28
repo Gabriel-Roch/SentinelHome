@@ -1,7 +1,10 @@
+import { DeviceType } from "@/domain/entities/device.entity";
 import { BaseParams } from "../base.params";
 
 export interface DeviceParams extends BaseParams {
-    name: string
     homeID: string
-    location : string
+    location: string
+    type: DeviceType
+    macAddress: string
+    isActive: boolean
 }

@@ -1,5 +1,6 @@
 import { Column, Entity } from "typeorm";
 import { Base } from "./base.entity";
+import { DeviceType } from "@/domain/entities/device.entity";
 
 @Entity('device')
 export class Device extends Base {
@@ -9,9 +10,15 @@ export class Device extends Base {
     homeID: string
 
     @Column('varchar', {
-        length: 120
+        length: 20
     })
-    name: string
+    macAddress: string
+
+    @Column('boolean')
+    isActive: boolean
+
+    @Column('varchar')
+    type: DeviceType
 
     @Column('varchar', {
         length: 80

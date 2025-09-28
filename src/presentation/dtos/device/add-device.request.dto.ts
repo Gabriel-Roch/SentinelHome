@@ -3,8 +3,10 @@ import { BaseDeviceDTO } from "./_base-device.dto";
 
 export class AddDeviceRequestDTO extends PickType(
     BaseDeviceDTO,
-    [
-        "name",
+    [   
+        "macAddress",
+        "isActive",
+        "type",
         "homeID",
         "location"
     ] as const)
