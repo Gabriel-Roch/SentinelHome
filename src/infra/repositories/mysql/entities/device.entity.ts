@@ -12,4 +12,9 @@ export class Device extends Base {
         length: 120
     })
     name: string
+
+    @Column('varchar', {
+        length: 80
+    })
+    location: string
 }

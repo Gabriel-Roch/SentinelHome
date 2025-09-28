@@ -20,10 +20,4 @@ export class BaseUserDTO extends BaseDTO {
     })
     @IsBoolean()
     isActive: boolean
-
-    @ApiProperty({
-        example: ""
-    })
-    @IsString()
-    refreshToken: string
 }

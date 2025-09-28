@@ -15,4 +15,10 @@ export class BaseDeviceDTO extends BaseDTO {
     })
     @IsString()
     name: string
+
+    @ApiProperty({
+        example: "sala"
+    })
+    @IsString()
+    location: string
 }

@@ -11,10 +11,4 @@ export class User extends Base {
 
     @Column('boolean')
     isActive: boolean
-
-    @Column('varchar', {
-        length: 255,
-        nullable: true
-    })
-    refreshToken: string
 }

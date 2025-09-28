@@ -5,7 +5,6 @@ export class UserEntity extends BaseEntity {
     username: string
     name: string
     isActive: boolean
-    refreshToken: string
 
     constructor(params: Partial<UserEntity>) {
         super(params)

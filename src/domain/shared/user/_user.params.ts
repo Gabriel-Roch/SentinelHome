@@ -4,5 +4,4 @@ export interface UserParams extends BaseParams {
     username: string
     name: string
     isActive: boolean
-    refreshToken: string
 }

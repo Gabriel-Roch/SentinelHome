@@ -35,6 +35,7 @@ export class AddDeviceUseCase {
             id: randomUUID(),
             homeID: params.homeID,
             name: params.name,
+            location : params.location,
             dt_create: new Date()
         })
 

@@ -5,6 +5,7 @@ export class AddDeviceRequestDTO extends PickType(
     BaseDeviceDTO,
     [
         "name",
-        "homeID"
+        "homeID",
+        "location"
     ] as const)
 { }
