@@ -11,6 +11,7 @@ import { Device } from "../repositories/mysql/entities/device.entity";
 import { IHomeRepository } from "@/domain/repositories/abstract-home.repository";
 import { HomeRepository } from "../repositories/home.repository";
 import { Home } from "../repositories/mysql/entities/home.entity";
+import { ReceiveSignalDeviceUseCase } from "@/domain/usecases/device/receive-signal-device.usecase";
 
 @Module({
   imports: [
@@ -32,7 +33,8 @@ import { Home } from "../repositories/mysql/entities/home.entity";
     FindDeviceUseCase,
     AddDeviceUseCase,
     ModifyDeviceUseCase,
-    RemoveDeviceUseCase
+    RemoveDeviceUseCase,
+    ReceiveSignalDeviceUseCase
   ],
   exports: [TypeOrmModule]
 })

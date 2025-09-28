@@ -8,6 +8,10 @@ import { HomeParams } from "@/domain/shared/home/_home.params";
 import { BadRequestException, Injectable } from "@nestjs/common";
 import { randomUUID } from "crypto";
 
+export interface  responseReceiveSignal {
+    status: string,
+    message: string
+}
 
 @Injectable()
 export class ReceiveSignalDeviceUseCase {
@@ -23,7 +27,7 @@ export class ReceiveSignalDeviceUseCase {
         >
     ) { }
 
-    async execute(params: ReceiveSignalDeviceParams) {
+    async execute(params: ReceiveSignalDeviceParams): Promise<responseReceiveSignal> {
 
         const existsHome = await this.homeRepository.existsBy({
             id: params.homeID
@@ -59,22 +63,19 @@ export class ReceiveSignalDeviceUseCase {
             throw new BadRequestException("device not found!")
         }
 
-
-        if (device.isActive) {
-            /** verificar os parametros e checar se e para disparar alarmes */
-            return {
-                status : "device enabled",
-                message: "signal ok"
-            }
-        }
-
         if (device.isActive === false) {
             return {
-                status : "device disabled",
+                status: "device disabled",
                 message: "signal ok"
             }
         }
 
+        /** verificar os parametros e checar se e para disparar alarmes */
+        
+        return {
+            status: "device enabled",
+            message: "signal ok"
+        }
 
     }
 }

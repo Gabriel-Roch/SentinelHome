@@ -2,6 +2,7 @@ import { AddDeviceUseCase } from "@/domain/usecases/device/add-device.usecase";
 import { FindDeviceUseCase } from "@/domain/usecases/device/find-device.usecase";
 import { ModifyDeviceUseCase } from "@/domain/usecases/device/modify-device.usecase";
 import { RemoveDeviceUseCase } from "@/domain/usecases/device/remove-device.usecase";
+import { ReceiveSignalDeviceUseCase } from "@/domain/usecases/device/receive-signal-device.usecase";
 import {
     BadRequestException,
     Body,
@@ -23,6 +24,7 @@ import { AddDeviceResponseDTO } from "../dtos/device/add-device.response.dto";
 import { ModifyDeviceRequestDTO } from "../dtos/device/modify-device.request.dto";
 import { ModifyDeviceResponseDTO } from "../dtos/device/modify-device.response.dto";
 import { HttpExceptionFilter } from "../filters/http-exception.filter";
+import { ReceiveSignalDeviceRequesterDTO } from "../dtos/device/receive-signal-device.requester.dto";
 
 @Controller('device')
 @UseFilters(new HttpExceptionFilter())
@@ -32,7 +34,8 @@ export class DeviceController {
         private readonly addDeviceUseCase: AddDeviceUseCase,
         private readonly findDeviceUseCase: FindDeviceUseCase,
         private readonly modifyDeviceUseCase: ModifyDeviceUseCase,
-        private readonly removeDeviceUseCase: RemoveDeviceUseCase
+        private readonly removeDeviceUseCase: RemoveDeviceUseCase,
+        private readonly receiveSignalDeviceUseCase: ReceiveSignalDeviceUseCase
     ) { }
 
     @Get()
@@ -65,6 +68,13 @@ export class DeviceController {
     @Delete(':id')
     async remove(@Param('id') id: string): Promise<void> {
         await this.removeDeviceUseCase.execute({ id })
+    }
+
+    @Post('receive-signal')
+    async receiveSignal(
+        @Body() params: ReceiveSignalDeviceRequesterDTO
+    ) {
+        return await this.receiveSignalDeviceUseCase.execute(params)
     }
 
 }
